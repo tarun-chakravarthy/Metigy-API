@@ -1,0 +1,9 @@
+FROM node:10-alpine
+WORKDIR '/app'
+COPY ./package.json .
+RUN npm install
+COPY . .
+ENV NODE_ENV test
+ENV ONETEAM_TEST_DB_SERVER host.docker.internal
+ENV ONETEAM_TEST_VOLUME /
+CMD ["npm", "test"]

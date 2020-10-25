@@ -1,0 +1,46 @@
+{
+  "name": "metigy-backend",
+  "version": "1.0.0",
+  "description": "Backend for Metigy",
+  "main": "app.js",
+  "scripts": {
+    "start": "node ./src/app.js",
+    "start:dev": "npm run docker:dev & (env NODE_ENV=development node ./src/app.js)",
+    "test": "env NODE_ENV=test jest --verbose --coverage -i",
+    "test:docker": "npm run docker:test  & env NODE_ENV=test jest --verbose --coverage -i",
+    "docker:dev": "docker run --rm --name psql -p 5432:5432 -e POSTGRES_USER=development -e POSTGRES_PASSWORD=development -v $HOME/metigy/dev_db:/var/lib/postgresql/data postgres:11.5",
+    "docker:test": "docker run --rm --name psql -p 5432:5432 -e POSTGRES_USER=test -e POSTGRES_PASSWORD=test -v $HOME/metigy/test_db:/var/lib/postgresql/data postgres:11.5"
+  },
+  "author": "Tarun",
+  "license": "ISC",
+  "dependencies": {
+    "@hapi/joi": "^16.1.7",
+    "bcryptjs": "^2.4.3",
+    "bluebird": "^3.7.1",
+    "body-parser": "^1.19.0",
+    "config": "^3.2.3",
+    "cors": "^2.8.5",
+    "crypto-random-string": "^3.0.1",
+    "deep-diff": "^1.0.2",
+    "express": "^4.17.1",
+    "joi-password-complexity": "^3.1.0",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.15",
+    "multer": "^1.4.2",
+    "mysql": "^2.18.1",
+    "nodemailer": "^6.4.2",
+    "nodemailer-express-handlebars": "^3.1.0",
+    "pg": "^7.12.1",
+    "pg-hstore": "^2.3.3",
+    "reflect-metadata": "^0.1.13",
+    "sequelize": "^5.19.6",
+    "socket.io": "^2.3.0",
+    "typeorm": "^0.2.28",
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "@types/node": "^14.14.2",
+    "jest": "^25.1.0",
+    "supertest": "^4.0.2"
+  }
+}
