@@ -56,7 +56,7 @@ app.get("/json", (req, res) => {
     checkedFirefox: false,
     checkedDevice: false,
     checkedVinn: false,
-    checkedOpera: flase,
+    checkedOpera: false,
     checkedChrome: false,
     webSites: [],
     keyWords: [],
